@@ -5,8 +5,6 @@ z=1
 def Create_World(x,y,z):
     pyrosim.Start_SDF("world.sdf")
     pyrosim.Send_Cube(name="Box",pos=[-1,1,0.5] , size=[x,y,z])
-#pyrosim.Send_Cube(name="Box",pos=[0,0,0.5] , size=[x,y,z])
-#pyrosim.Send_Cube(name="Box2",pos=[1,0,1.5] , size=[x,y,z]) #pos=[-1,1,0.5] , size=[x,y,z])
     pyrosim.End()
 Create_World(x,y,z)
 def Create_Robot(x,y,z):
@@ -18,8 +16,3 @@ def Create_Robot(x,y,z):
   pyrosim.Send_Cube(name="BackLeg", pos=[-0.5,0,-0.5] , size=[x,y,z])
   pyrosim.End()
 Create_Robot(x,y,z)
-
-#pyrosim.Send_Cube(name="Box", pos=[0,0,0.5] , size=[x,y,z])
-#Create_World(x,y,z)
-#Create_Robot(x,y,z)
-#pyrosim.End()
