@@ -7,8 +7,7 @@ import random
 
 
 physicsClient = p.connect(p.GUI)
-p.setAdditionalSearchPath(pybullet_data.getDataPath())
-p.loadSDF("Box.sdf")
+p.loadSDF("box.sdf")
 for i in range(1000):
     p.stepSimulation()
     time.sleep(1/240)
