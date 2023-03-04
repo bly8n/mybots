@@ -1,10 +1,8 @@
 import numpy as np
 amplitude=np.pi/3
-frequency=3
+frequency=1
 phaseOffset=0
-FrontLeg_amplitude=np.pi/3
-FrontLeg_frequency=1
-FrontLeg_phaseOffset=np.pi/4
+
 
 backLegSensorValues = np.zeros(1000)
 frontLegSensorValues = np.zeros(1000)
