@@ -21,12 +21,13 @@ class SIMULATION:
         p.loadSDF("world.sdf")
         self.planeId = p.loadURDF("plane.urdf")
     def Run(self):
+        
         for i in range(1000):
             p.stepSimulation()
-            time.sleep(1/240)
+            time.sleep(1/1000)
             self.robot.Prepare_To_Sense(i)
             self.robot.Think()
-            self.robot.Prepare_To_Act(i,self.robotId)
+            self.robot.Prepare_To_Act(self.robot.Act(),self.robotId)
             self.robot.Save_Values(i)
             
     def __del__(self):
