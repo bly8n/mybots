@@ -19,6 +19,7 @@ class NEURON:
         self.Search_For_Joint_Name(line)
 
         self.Set_Value(0.0)
+        #self.name= 
 
     def Add_To_Value( self, value ):
 
@@ -65,7 +66,10 @@ class NEURON:
     def Set_Value(self,value):
 
         self.value = value
-
+    def Update_Sensor_Neuron(self):
+        self.Set_Value(pyrosim.Get_Touch_Sensor_Value_For_Link(self.Get_Link_Name()))
+    def Update_Hidden_Or_Motor_Neuron(self):
+        self.Set_Value(0.0)
 # -------------------------- Private methods -------------------------
 
     def Determine_Name(self,line):
