@@ -1,6 +1,11 @@
 import os
 import time
-for i in range(2):
-    os.system("python3 generate.py")
-    os.system("python3 simulate.py")
-    time.sleep(5)
+from hillclimber import HILL_CLIMBER
+hc = HILL_CLIMBER()
+hc.Evolve('DIRECT')
+hc.Show_Best()
+#for i in range(5):
+    #os.system("python generate.py")
+    #time.sleep(2)
+    #os.system("python simulate.py")
+    #
