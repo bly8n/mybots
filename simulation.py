@@ -8,10 +8,15 @@ import constants as c
 import time
 import numpy as np
 import random
+import sys
 class SIMULATION:
-    def __init__(self):
+    def __init__(self,directOrGUI):
         self.world=WORLD()
-        self.physicsClient = p.connect(p.GUI)
+        self.directOrGUI=directOrGUI
+        if self.directOrGUI=='DIRECT':
+            self.physicsClient = p.connect(p.DIRECT)
+        elif self.directOrGUI=='GUI':
+            self.physicsClient = p.connect(p.GUI)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)
         self.robotId = p.loadURDF("body.urdf")
@@ -20,6 +25,7 @@ class SIMULATION:
         #self.robot.Prepare_To_Sense()
         p.loadSDF("world.sdf")
         self.planeId = p.loadURDF("plane.urdf")
+        
     def Run(self):
         for i in range(1000):
             p.stepSimulation()
@@ -28,6 +34,8 @@ class SIMULATION:
             self.robot.Think()
             #self.robot.Save_Values(i)
             self.robot.Act(self.robotId)
+    def Get_Fitness(self):
+        self.robot.Get_Fitness(self.robotId)
             
     def __del__(self):
         p.disconnect()
