@@ -6,8 +6,6 @@ class MOTOR:
     def __init__(self,robot,jointName):
         self.robot=robot
         self.jointName=jointName
-        #self.robotId=robotId
-        #self.robotId=p.loadURDF("body.urdf")
         self.values=np.zeros(1000)
     def Set_Value(self,desiredAngle,robotId):
         self.robotId=robotId
@@ -22,11 +20,7 @@ class MOTOR:
             bodyIndex =self.robotId,
             jointName = self.jointName,
             controlMode = p.POSITION_CONTROL,
-            targetPosition = self.amplitude * np.sin(self.frequency*desiredAngle*np.pi*2/100+ self.phaseOffset),
+            targetPosition = desiredAngle,
             maxForce = 23)
-        self.values[desiredAngle]=np.sin(self.amplitude * np.sin(self.frequency*desiredAngle*np.pi*2/100+ self.phaseOffset))
-        #if t==1000-1:
-         #   print(self.jointName,self.values[t])
-        return self.values[desiredAngle]
-    #
+        return desiredAngle
     
