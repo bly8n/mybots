@@ -2,8 +2,8 @@ import numpy as np
 amplitude=np.pi/3
 frequency=1
 phaseOffset=0
-numberOfGenerations=4
-
+numberOfGenerations=2
+populationSize=2
 backLegSensorValues = np.zeros(1000)
 frontLegSensorValues = np.zeros(1000)
 Back_targetAngles=np.zeros(1000)
