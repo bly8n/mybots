@@ -10,8 +10,9 @@ import numpy as np
 import random
 import sys
 class SIMULATION:
-    def __init__(self,directOrGUI):
+    def __init__(self,directOrGUI,solutionID):
         self.world=WORLD()
+        self.solutionID=solutionID
         self.directOrGUI=directOrGUI
         if self.directOrGUI=='DIRECT':
             self.physicsClient = p.connect(p.DIRECT)
@@ -20,7 +21,7 @@ class SIMULATION:
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.setGravity(0,0,-9.8)
         self.robotId = p.loadURDF("body.urdf")
-        self.robot=ROBOT(self.robotId)
+        self.robot=ROBOT(self.robotId,solutionID)
         pyrosim.Prepare_To_Simulate(self.robotId)
         #self.robot.Prepare_To_Sense()
         p.loadSDF("world.sdf")
@@ -29,7 +30,8 @@ class SIMULATION:
     def Run(self):
         for i in range(1000):
             p.stepSimulation()
-            time.sleep(1/300)
+            #if self.directOrGUI=='GUI':
+            time.sleep(1/100)
             self.robot.Sense(i)
             self.robot.Think()
             #self.robot.Save_Values(i)
